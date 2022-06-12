@@ -8,12 +8,12 @@ class ProfileViewController: UIViewController {
 
     private lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView =  ProfileHeaderView()
-        profileHeaderView.backgroundColor = .systemRed
+        profileHeaderView.backgroundColor = .systemGray
         // Задать размер view что бы он был равен корневому viev
         profileHeaderView.frame = CGRect(x: 0,y: 0,width: view.bounds.width, height: view.bounds.height)
         //Обнулять констрэйты, нужно использовать при верстке кодом обезательно!
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        profileHeaderView.alpha = 0.5
+        //profileHeaderView.alpha = 0.5
         return profileHeaderView
         
     }()

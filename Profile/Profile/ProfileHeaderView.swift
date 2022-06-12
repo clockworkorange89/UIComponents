@@ -25,6 +25,7 @@ class ProfileHeaderView: UIView {
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "morty")
+        imageView.alpha = 1
         return imageView
     }()
     
@@ -49,18 +50,20 @@ class ProfileHeaderView: UIView {
         setStatusButton.setTitleColor(.white, for: .normal)
         return setStatusButton
     }()
-/*
+
     private lazy var SetTextView: UITextView = {
-        let setStatus = UITextView()
-        setStatus.text = "aaaaaas"
-        setStatus.layer.cornerRadius = 12
-        setStatus.font = UIFont(name: "regular", size: 15)
-        setStatus.layer.borderWidth = 1
-        setStatus.layer.backgroundColor = .init(red: 255, green: 255, blue: 255, alpha: 1)
-        setStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-        return setStatus
+    let statusTextField = UITextView()
+     statusTextField.text = "aaaaaas"
+     statusTextField.layer.cornerRadius = 12
+     statusTextField.font = UIFont(name: "regular", size: 15)
+     statusTextField.layer.borderWidth = 1
+     statusTextField.layer.backgroundColor = .init(red: 255, green: 255, blue: 255, alpha: 1)
+     statusTextField.translatesAutoresizingMaskIntoConstraints = false
+     
+  
+        return  statusTextField
     }()
-  */
+  
     private lazy var uiLabelStatus: UILabel = {
         let statusTextLabel = UILabel()
         statusTextLabel.text = "Waiting for something..."
@@ -77,7 +80,7 @@ class ProfileHeaderView: UIView {
         self.pushButton()
     }
     
-    
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -95,6 +98,7 @@ class ProfileHeaderView: UIView {
     self.addSubview(self.headerLabelView)
     self.addSubview(self.uiBotton)
     self.addSubview(self.uiLabelStatus)
+    self.addSubview(self.SetTextView)
     // Создаём расположение для ui  элементов
     NSLayoutConstraint.activate([
         //Расположение картинки
@@ -103,7 +107,7 @@ class ProfileHeaderView: UIView {
         self.avatarImageView.widthAnchor.constraint(equalToConstant: 100),
         self.avatarImageView.heightAnchor.constraint(equalToConstant: 100),
         
-       //Расположение лэйбла
+       //Расположение верхнего лэйбла
         self.headerLabelView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 11),
         self.headerLabelView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),  
         self.headerLabelView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 0 ),
@@ -113,20 +117,26 @@ class ProfileHeaderView: UIView {
         //Расположение кнопки
     
        self.uiBotton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant:16 ),
-       self.uiBotton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16), 
-        self.uiBotton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16 ),
+        self.uiBotton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+        self.uiBotton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16 ),
        self.uiBotton.widthAnchor.constraint(equalToConstant: 260),
         self.uiBotton.heightAnchor.constraint(equalToConstant: 50),
         
-        // Расположение TextView
+        // Расположение  второго лэйбла
         
-       //self.uiTextView.topAnchor.constraint(equalTo: headerLabelView.bottomAnchor, constant:0 ),
+       
        self.uiLabelStatus.bottomAnchor.constraint(equalTo: uiBotton.topAnchor, constant:-34),
         self.uiLabelStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-       self.uiLabelStatus.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 0),
+       self.uiLabelStatus.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),
         self.uiLabelStatus.widthAnchor.constraint(equalToConstant: 265),
          self.uiLabelStatus.heightAnchor.constraint(equalToConstant: 40),
-         
+         // расположение text view
+        
+        self.SetTextView.topAnchor.constraint(equalTo: uiLabelStatus.topAnchor, constant:30),
+        self.SetTextView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+       self.SetTextView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
+         self.SetTextView.widthAnchor.constraint(equalToConstant: 200),
+          self.SetTextView.heightAnchor.constraint(equalToConstant: 40),
         
                                     ])
     
@@ -139,11 +149,11 @@ class ProfileHeaderView: UIView {
         print(uiLabelStatus.text!)
             }
     
-   /*
+   
     @objc func statusTextChanged(_ textField: UITextField){
         statusText = textField.text ?? "empty"
     }
-    */
+    
     
 }
 
