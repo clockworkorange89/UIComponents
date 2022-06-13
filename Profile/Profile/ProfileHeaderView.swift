@@ -51,17 +51,17 @@ class ProfileHeaderView: UIView {
         return setStatusButton
     }()
 
-    private lazy var SetTextView: UITextView = {
-    let statusTextField = UITextView()
+    private lazy var SetTextView: UITextField = {
+    let statusTextField = UITextField()
      statusTextField.text = "aaaaaas"
      statusTextField.layer.cornerRadius = 12
      statusTextField.font = UIFont(name: "regular", size: 15)
      statusTextField.layer.borderWidth = 1
      statusTextField.layer.backgroundColor = .init(red: 255, green: 255, blue: 255, alpha: 1)
      statusTextField.translatesAutoresizingMaskIntoConstraints = false
-     
-  
-        return  statusTextField
+    statusTextField.leftViewMode = .always
+    statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+    return  statusTextField
     }()
   
     private lazy var uiLabelStatus: UILabel = {
@@ -89,6 +89,7 @@ class ProfileHeaderView: UIView {
     private func pushButton(){
        
         uiBotton.addTarget(self, action: #selector(doOnButton), for: .touchUpInside)
+        
     }
     
     
@@ -147,11 +148,14 @@ class ProfileHeaderView: UIView {
     // Добавьте обработку нажатия по кнопке addTarget, UIEvent выбрать .touchUpInside. Добавьте функцию, которую будет принимать обработчик, например, @objc func buttonPressed()
     @objc func doOnButton(){
         print(uiLabelStatus.text!)
+        uiLabelStatus.text = SetTextView.text
             }
-    
+    //Добавьте обработку изменения введенного текста при помощи addTarget, UIEvent выбрать .editingChanged. Добавьте функцию, которую будет принимать обработчик, например, @objc func statusTextChanged(_ textField: UITextField).
    
     @objc func statusTextChanged(_ textField: UITextField){
         statusText = textField.text ?? "empty"
+        print("Переменная: \(statusText)")
+        
     }
     
     
