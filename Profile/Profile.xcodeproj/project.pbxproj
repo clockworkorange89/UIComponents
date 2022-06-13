@@ -13,6 +13,7 @@
 		5F4C28A3284B414B00E0FE2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C28A1284B414B00E0FE2E /* LaunchScreen.storyboard */; };
 		5F4C28AD284BA06000E0FE2E /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C28AC284BA06000E0FE2E /* ProfileHeaderView.swift */; };
 		5F4C28BB284BAD7300E0FE2E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C28BA284BAD7300E0FE2E /* ProfileViewController.swift */; };
+		5FFE9C012857BC04004C6CCA /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFE9C002857BC04004C6CCA /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5F4C28A4284B414B00E0FE2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4C28AC284BA06000E0FE2E /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		5F4C28BA284BAD7300E0FE2E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5FFE9C002857BC04004C6CCA /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				5F4C2898284B414200E0FE2E /* SceneDelegate.swift */,
 				5F4C28AC284BA06000E0FE2E /* ProfileHeaderView.swift */,
 				5F4C289F284B414B00E0FE2E /* Assets.xcassets */,
+				5FFE9C002857BC04004C6CCA /* LogInViewController.swift */,
 				5F4C28A1284B414B00E0FE2E /* LaunchScreen.storyboard */,
 				5F4C28A4284B414B00E0FE2E /* Info.plist */,
 			);
@@ -139,6 +142,7 @@
 				5F4C2897284B414200E0FE2E /* AppDelegate.swift in Sources */,
 				5F4C2899284B414200E0FE2E /* SceneDelegate.swift in Sources */,
 				5F4C28BB284BAD7300E0FE2E /* ProfileViewController.swift in Sources */,
+				5FFE9C012857BC04004C6CCA /* LogInViewController.swift in Sources */,
 				5F4C28AD284BA06000E0FE2E /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

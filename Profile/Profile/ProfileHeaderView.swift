@@ -104,7 +104,7 @@ class ProfileHeaderView: UIView {
     NSLayoutConstraint.activate([
         //Расположение картинки
         self.avatarImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
-        self.avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+        self.avatarImageView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 16),
         self.avatarImageView.widthAnchor.constraint(equalToConstant: 100),
         self.avatarImageView.heightAnchor.constraint(equalToConstant: 100),
         
