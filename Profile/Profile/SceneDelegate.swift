@@ -15,12 +15,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let  windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        // создание navigation bar  и tab bar
+        func createFeedViewController() -> UINavigationController {
+                let feedViewController = FeedController()
+               feedViewController.title = "Feed"
+                feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
+                return UINavigationController(rootViewController: feedViewController)
+
+            }
         
-        self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = TabBarController()
-        self.window?.makeKeyAndVisible()
+       
+            func createProfileViewController() -> UINavigationController {
+            let profileViewController = ProfileViewController()
+            profileViewController.title = "Profile"
+            profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.circle"), tag: 1)
+            return UINavigationController(rootViewController: profileViewController)
+            }
+            
+            func createTabBarController() -> UITabBarController {
+            UITabBar.appearance().backgroundColor = .systemBlue
+            let tabBarController = UITabBarController()
+            tabBarController.viewControllers = [createFeedViewController(), createProfileViewController()]
+            return tabBarController
+        }
         
+    
+        window?.windowScene = windowScene
+        window?.rootViewController = createTabBarController()
+        window?.makeKeyAndVisible()
+
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
