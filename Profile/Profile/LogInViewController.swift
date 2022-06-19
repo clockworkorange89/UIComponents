@@ -17,7 +17,7 @@ class LogInViewController: UIViewController {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 0
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -55,6 +55,16 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    private lazy var pictureVK: UIImageView = {
+        let pictureVK = UIImageView()
+        pictureVK.image = #imageLiteral(resourceName: "vklogo")
+        pictureVK.backgroundColor = .systemRed
+        pictureVK.layer.cornerRadius = 4
+        pictureVK.clipsToBounds = true
+        pictureVK.translatesAutoresizingMaskIntoConstraints = false
+        return pictureVK
+    }()
+    
     private var login: String?
 
     override func viewDidLoad() {
@@ -65,13 +75,11 @@ class LogInViewController: UIViewController {
         self.scrollView.addSubview(self.stackView)
         self.stackView.addArrangedSubview(self.loginTextField)
         self.stackView.addArrangedSubview(self.passwordTextField)
-        self.stackView.addArrangedSubview(self.button)
-        let scrollViewConstraints = self.scrollViewConstraints()
-        let stackViewConstraints = self.stackViewConstraints()
-        NSLayoutConstraint.activate(
-            scrollViewConstraints +
-            stackViewConstraints
-        )
+        //self.stackView.addArrangedSubview(self.button)
+        self.scrollView.addSubview(self.pictureVK)
+        self.scrollView.addSubview(self.button)
+        //self.scrollView.addSubview(ProfileHeaderView)
+        UiConstraint()
     }
     
     private func setupGestures() {
@@ -91,26 +99,42 @@ class LogInViewController: UIViewController {
                                                object: nil)
     }
     
-    private func scrollViewConstraints() -> [NSLayoutConstraint] {
-        let topAnchor = self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let leadingAnchor = self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let trailingAnchor = self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomAnchor = self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        
-        return [
-            topAnchor, leadingAnchor, trailingAnchor, bottomAnchor
-        ]
-    }
+
     
-    private func stackViewConstraints() -> [NSLayoutConstraint] {
-        let centerYConstraint = self.stackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor)
-        let leadingConstraint = self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50)
-        let trailingConstraint = self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50)
-        let heightConstraint = self.stackView.heightAnchor.constraint(equalToConstant: 180)
-        
-        return [
-            centerYConstraint, leadingConstraint, trailingConstraint, heightConstraint
-        ]
+    private func  UiConstraint(){
+        NSLayoutConstraint.activate([
+            //ScrollView
+            self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
+            // image
+            //self.pictureVK.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor),
+            self.pictureVK.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 120),
+            //self.pictureVK.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: 120),
+            self.pictureVK.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 140),
+            self.pictureVK.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -140),
+            self.pictureVK.widthAnchor.constraint(equalToConstant: 100),
+            self.pictureVK.heightAnchor.constraint(equalToConstant: 100),
+//self.pictureVK.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
+            
+            // stackView
+       self.stackView.topAnchor.constraint(equalTo: pictureVK.bottomAnchor, constant: 120),
+     self.stackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor),
+       self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
+        self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50),
+       self.stackView.heightAnchor.constraint(equalToConstant: 100),
+            //self.pictureVK.bottomAnchor.constraint(equalTo: self.button.topAnchor, constant: 16),
+            //Кнопка
+            
+            self.button.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 16),
+            self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 50),
+            self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -50),
+            //self.pictureVK.widthAnchor.constraint(equalToConstant: 240),
+            self.button.heightAnchor.constraint(equalToConstant: 50),
+            //self.pictureVK.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor)
+        ])
     }
     
     @objc private func didShowKeyboard(_ notification: Notification) {
